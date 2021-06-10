@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+
+  val_dashboard_db:
+    image: jloomisvce/dashboard:val_dashboard_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    shm_size: 1gb 
+    build:
+      context: ./val_dashboard_db
+    ports:
+      - '6543:5432'
+    volumes:
+      # note: kartoza/postgis uses different location to persist data:
+      - val_dashboard_db:/var/lib/postgresql
+      # use this location for plain postgres image:
+      #- val_dashboard_db:/var/lib/postgresql/data
+
+volumes:
+  val_dashboard_db:
