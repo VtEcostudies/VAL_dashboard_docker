@@ -1,3 +1,4 @@
 /db-backup
 /db-load
 /db-test
+secrets.sql
